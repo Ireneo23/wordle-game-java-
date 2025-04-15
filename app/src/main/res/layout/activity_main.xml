@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/bg_green">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/history_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:padding="24dp"
+        android:contentDescription="@string/history"
+        android:background="@drawable/history_btn"
+        android:textColor="@color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"/>
+
+    <TextView
+        android:id="@+id/txt_win_lose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/congrat_you_won"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="40dp"
+        android:orientation="vertical"
+        android:layout_marginEnd="40dp"
+        android:background="@color/primary_white"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_11"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view1"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tview_12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view2"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_13"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view3"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tview_14"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view4"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_15"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view5"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_21"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view6"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_22"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view7"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_23"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view8"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view9"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_25"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view10"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_31"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view11"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tview_32"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view12"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_33"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view13"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_34"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view14"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_35"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view15"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_41"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view16"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_42"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view17"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_43"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view18"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_44"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view19"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_45"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view20"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_51"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view21"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tview_52"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view22"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_53"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view23"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_54"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view24"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tview_55"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:contentDescription="@string/view25"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tview_61"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+                <TextView
+                android:id="@+id/tview_62"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_63"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tview_64"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_edit"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tview_65"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_edit"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/grid_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:layout_below="@+id/main_layout"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:columnCount="11">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_q"
+            android:text="@string/q"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_w"
+            android:text="@string/w"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_e"
+            android:text="@string/e"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_r"
+            android:text="@string/r"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_t"
+            android:text="@string/t"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_y"
+            android:text="@string/y"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_u"
+            android:text="@string/u"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_i"
+            android:text="@string/i"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_o"
+            android:text="@string/o"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_p"
+            android:text="@string/p"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+
+    </GridLayout>
+    <GridLayout
+        android:id="@+id/grid_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:layout_below="@+id/grid_1"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:columnCount="9">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_a"
+            android:text="@string/a"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_s"
+            android:text="@string/s"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_d"
+            android:text="@string/d"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_f"
+            android:text="@string/f"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_g"
+            android:text="@string/g"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_h"
+            android:text="@string/h"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_j"
+            android:text="@string/j"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_k"
+            android:text="@string/k"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_l"
+            android:text="@string/l"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/grid_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="1"
+        android:layout_below="@+id/grid_2"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="42dp"
+        android:columnCount="8">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_z"
+            android:text="@string/z"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_x"
+            android:text="@string/x"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_c"
+            android:text="@string/c"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_v"
+            android:text="@string/v"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_b"
+            android:text="@string/b"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_n"
+            android:text="@string/n"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_m"
+            android:text="@string/m"
+            style="@style/KeyboardButton"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_backspace"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="2dp"
+            android:contentDescription="@string/backspace"
+            android:background="@drawable/backspace_selector"
+            />
+        <!-- Add rows for A-S-D-F-G-H-J-K-L and Z-X-C-V-B-N-M -->
+    </GridLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grid_3"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/submit_btn"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        />
+
+</RelativeLayout>
