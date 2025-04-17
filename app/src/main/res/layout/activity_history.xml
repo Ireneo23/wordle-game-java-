@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/historyLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/bg_green">
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    tools:context=".view.HistoryActivity">
 
     <TextView
-        android:id="@+id/history_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/historyTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/game_history"
+        android:text="Game History"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp" />
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="#333333" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_history"
+        android:id="@+id/historyRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/history_title"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/recyclerview"/>
-
-
-</RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:contentDescription="@string/game_history_list"/>
+</LinearLayout>

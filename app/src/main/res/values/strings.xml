@@ -63,4 +63,6 @@
     <string name="tries_3">Tries: 3</string>
     <string name="result_win">Result: Win</string>
     <string name="word_apple">Word: apple</string>
+    <string name="date_played">date played</string>
+    <string name="game_history_list">Game History List</string>
 </resources>
