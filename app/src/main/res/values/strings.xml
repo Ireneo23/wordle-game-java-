@@ -65,4 +65,10 @@
     <string name="word_apple">Word: apple</string>
     <string name="date_played">date played</string>
     <string name="game_history_list">Game History List</string>
+    <string name="username">Username</string>
+    <string name="sign_up">Sign up</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="loginusername">Username</string>
 </resources>

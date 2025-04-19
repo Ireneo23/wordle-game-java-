@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "347221747143",
+    "project_id": "wordle-app-f0f4e",
+    "storage_bucket": "wordle-app-f0f4e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347221747143:android:4aa125f8d0a166be53e5e2",
+        "android_client_info": {
+          "package_name": "com.example.wordleapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-ijttF2dAwhtucBOvM22npncNJKv_J2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

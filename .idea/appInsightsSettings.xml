@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.wordleapp" />
+                  <option name="mobileSdkAppId" value="1:347221747143:android:4aa125f8d0a166be53e5e2" />
+                  <option name="projectId" value="wordle-app-f0f4e" />
+                  <option name="projectNumber" value="347221747143" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

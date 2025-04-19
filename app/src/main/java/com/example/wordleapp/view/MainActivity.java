@@ -1,6 +1,7 @@
 package com.example.wordleapp.view;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -17,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.wordleapp.BuildConfig;
 import com.example.wordleapp.R;
 import com.example.wordleapp.utils.ApiClient;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -41,13 +45,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Button logoutButton = findViewById(R.id.logout);
         txtWinLose = findViewById(R.id.txt_win_lose);
         setupGridTextViews();
         setupKeyboard();
-        requestQueue = Volley.newRequestQueue(this); // Initialize the request queue once
         fetchRandomWord();
         setupSubmitAndBackspace();
+
+
+        logoutButton.setOnClickListener(v -> {
+            new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("Sign Out")
+                    .setMessage("Are you sure you want to sign out?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                    .show();
+        });
     }
 
     private void fetchRandomWord() {
@@ -55,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
             Log.d("API", "Response: " + response);
             // Clean the response
             targetWord = response.replace("[", "").replace("]", "").replace("\"", "").toUpperCase();
+
+            // Check if the word length is 5
+            if (targetWord.length() != 5) {
+                Log.e("API", "Invalid word length: " + targetWord);
+                Toast.makeText(this, "Invalid word fetched from API", Toast.LENGTH_SHORT).show();
+                fetchRandomWord(); // Retry fetching a valid word
+            }
         }, error -> {
             Log.e("API", "Error: " + error.toString()); // Log the error
             Toast.makeText(this, "Failed to fetch word", Toast.LENGTH_SHORT).show();
@@ -62,11 +88,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupGridTextViews() {
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= maxAttempts; i++) {
             List<TextView> row = new ArrayList<>();
             for (int j = 1; j <= 5; j++) {
                 int id = getResources().getIdentifier("tview_" + i + j, "id", getPackageName());
-                row.add(findViewById(id));
+                TextView textView = findViewById(id);
+                textView.setOnClickListener(v -> handleCellClick(textView));
+                row.add(textView);
             }
             guessTextViews.add(row);
         }
@@ -79,6 +107,14 @@ public class MainActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setOnClickListener(view -> handleKeyPress(c));
             keyboardButtons.add(btn);
+        }
+    }
+
+    private void handleCellClick(TextView textView) {
+        if (currentLetterIndex > 0 && currentAttempt < maxAttempts) {
+            currentLetterIndex--;
+            currentGuess.deleteCharAt(currentLetterIndex);
+            textView.setText("");
         }
     }
 
@@ -125,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
             if (guessChars[i] == targetChars[i]) {
                 tv.setBackgroundColor(Color.parseColor("#66BB6A")); // Green
                 tv.setTextColor(Color.WHITE);
-                updateKeyColor(guessChars[i], "#66BB6A");
+                updateKeyColor(guessChars[i], "#66BB6A"); // Update keyboard button color to green
                 checked[i] = true;
             }
         }
@@ -148,11 +184,11 @@ public class MainActivity extends AppCompatActivity {
             if (found) {
                 tv.setBackgroundColor(Color.parseColor("#FFEB3B")); // Yellow
                 tv.setTextColor(Color.BLACK);
-                updateKeyColor(guessChars[i], "#FFEB3B");
+                updateKeyColor(guessChars[i], "#FFEB3B"); // Update keyboard button color to yellow
             } else {
                 tv.setBackgroundColor(Color.parseColor("#333333")); // Dark Gray
                 tv.setTextColor(Color.WHITE);
-                updateKeyColor(guessChars[i], "#333333");
+                updateKeyColor(guessChars[i], "#333333"); // Update keyboard button color to black
             }
         }
 
@@ -160,15 +196,28 @@ public class MainActivity extends AppCompatActivity {
         if (guess.equals(targetWord)) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Win!");
+            disableInput();
         } else if (currentAttempt == maxAttempts - 1) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Lose! Word: " + targetWord);
+            disableInput();
         }
 
         // Prepare for next round
         currentGuess.setLength(0);
         currentLetterIndex = 0;
         currentAttempt++;
+    }
+
+    private void disableInput() {
+        for (List<TextView> row : guessTextViews) {
+            for (TextView textView : row) {
+                textView.setOnClickListener(null);
+            }
+        }
+        for (Button btn : keyboardButtons) {
+            btn.setOnClickListener(null);
+        }
     }
 
     private void updateKeyColor(char letter, String color) {
@@ -178,5 +227,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }
 
