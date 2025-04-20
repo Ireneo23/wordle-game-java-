@@ -25,9 +25,6 @@ import com.example.wordleapp.BuildConfig;
 import com.example.wordleapp.R;
 import com.example.wordleapp.utils.ApiClient;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 import java.util.HashMap;
