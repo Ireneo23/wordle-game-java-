@@ -17,7 +17,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="212dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/loginusername"
+        android:hint="@string/email"
         android:textColorHint="@color/bg_green"
         app:boxBackgroundColor="@null"
         app:boxBackgroundMode="outline"
@@ -34,7 +34,7 @@
         app:startIconTint="@color/bg_green">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/logInEmail"
+            android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -109,10 +109,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.693" />
 
     <TextView
         android:id="@+id/signUp"
@@ -127,9 +127,36 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.694" />
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="@string/error_while_logging_in"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:visibility="gone"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/error" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

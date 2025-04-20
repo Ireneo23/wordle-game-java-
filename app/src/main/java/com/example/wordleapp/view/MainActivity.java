@@ -2,6 +2,7 @@ package com.example.wordleapp.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,20 +13,26 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wordleapp.BuildConfig;
 import com.example.wordleapp.R;
 import com.example.wordleapp.utils.ApiClient;
-import com.google.firebase.auth.FirebaseAuth;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -40,33 +47,29 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtWinLose;
     private RequestQueue requestQueue;
     private final String API_KEY = BuildConfig.API_KEY;
+    AppCompatButton profileButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button logoutButton = findViewById(R.id.logout);
         txtWinLose = findViewById(R.id.txt_win_lose);
+        profileButton = findViewById(R.id.profile);
         setupGridTextViews();
         setupKeyboard();
         fetchRandomWord();
         setupSubmitAndBackspace();
 
-
-        logoutButton.setOnClickListener(v -> {
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Sign Out")
-                    .setMessage("Are you sure you want to sign out?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
-                        FirebaseAuth.getInstance().signOut();
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
-                    })
-                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
-                    .show();
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
+
     }
 
     private void fetchRandomWord() {

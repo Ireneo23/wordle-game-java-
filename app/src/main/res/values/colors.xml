@@ -9,5 +9,7 @@
     <color name="keyboard_button_text_color">#000000</color>
     <color name="blue">#056EC1</color>
     <color name="dark_blue">#311B92</color>
+    <color name="red">#B71C1C</color>
+
 
 </resources>
