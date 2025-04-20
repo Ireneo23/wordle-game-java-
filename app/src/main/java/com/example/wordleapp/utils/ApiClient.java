@@ -20,14 +20,17 @@ public class ApiClient {
 
     public static void getRandomWord(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord?minLength=5&maxLength=5&api_key=" + API_KEY;
+        String BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord?minLength=5&maxLength=5&hasDictionaryDef=true&api_key=" + API_KEY;
         StringRequest request = new StringRequest(Request.Method.GET, BASE_URL, response -> {
             Log.d("API_RESPONSE", "Raw Response: " + response);
             try {
-
                 JSONObject jsonResponse = new JSONObject(response);
                 String word = jsonResponse.getString("word");
-                listener.onResponse(word.toUpperCase());
+                if (word.length() == 5 && word.matches("[a-zA-Z]+")) {
+                    listener.onResponse(word.toUpperCase());
+                } else {
+                    errorListener.onErrorResponse(new VolleyError("Invalid word or contains special characters"));
+                }
             } catch (JSONException e) {
                 Log.e("API_ERROR", "JSON Parsing Error: " + e.getMessage());
                 errorListener.onErrorResponse(new VolleyError("Invalid JSON response"));

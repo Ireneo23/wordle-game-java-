@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtWinLose;
     private RequestQueue requestQueue;
     private final String API_KEY = BuildConfig.API_KEY;
-    AppCompatButton profileButton;
+    AppCompatButton profileButton, nextGameButton;
 
 
     @Override
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         txtWinLose = findViewById(R.id.txt_win_lose);
         profileButton = findViewById(R.id.profile);
+        nextGameButton = findViewById(R.id.nextGame);
         setupGridTextViews();
         setupKeyboard();
         fetchRandomWord();
@@ -67,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        nextGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetGame();
+            }
+        });
     }
 
     private void fetchRandomWord() {
@@ -197,10 +204,12 @@ public class MainActivity extends AppCompatActivity {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Win!");
             disableInput();
+            nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
         } else if (currentAttempt == maxAttempts - 1) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Lose! Word: " + targetWord);
             disableInput();
+            nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
         }
 
         // Prepare for next round
@@ -228,5 +237,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-}
+    private void resetGame() {
+        // Reset game state
+        currentAttempt = 0;
+        currentLetterIndex = 0;
+        currentGuess.setLength(0);
+        txtWinLose.setVisibility(View.GONE);
+        nextGameButton.setVisibility(View.GONE);
 
+        // Clear grid and keyboard
+        for (List<TextView> row : guessTextViews) {
+            for (TextView textView : row) {
+                textView.setText("");
+                textView.setBackgroundColor(Color.rgb(99, 99, 99));
+                textView.setTextColor(Color.WHITE);
+                textView.setOnClickListener(v -> handleCellClick(textView));
+            }
+        }
+        for (Button btn : keyboardButtons) {
+            btn.setBackgroundColor(Color.parseColor("#636363"));
+            btn.setOnClickListener(view -> handleKeyPress(btn.getText().toString().charAt(0)));
+        }
+
+        // Fetch a new word
+        fetchRandomWord();
+    }
+
+}
