@@ -10,6 +10,10 @@
     <color name="blue">#056EC1</color>
     <color name="dark_blue">#311B92</color>
     <color name="red">#B71C1C</color>
+    <color name="correctSpot">#66BB6A</color>
+    <color name="wordle_present_spot">#FFEB3B</color>
+    <color name="wordle_absent_spot">#616161</color>
+
 
 
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_padding">16dp</dimen>
+    <dimen name="large_padding">24dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="wordle_tile_size">48dp</dimen>
+    <dimen name="wordle_tile_margin">4dp</dimen>
+    <dimen name="section_spacing">24dp</dimen>
+    <dimen name="item_spacing">12dp</dimen>
+</resources>

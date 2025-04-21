@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtWinLose;
     private RequestQueue requestQueue;
     private final String API_KEY = BuildConfig.API_KEY;
-    AppCompatButton profileButton, nextGameButton;
-
+    AppCompatButton nextGameButton;
+    ImageView profileButton, questionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,21 @@ public class MainActivity extends AppCompatActivity {
         txtWinLose = findViewById(R.id.txt_win_lose);
         profileButton = findViewById(R.id.profile);
         nextGameButton = findViewById(R.id.nextGame);
+        questionButton = findViewById(R.id.question);
         setupGridTextViews();
         setupKeyboard();
         fetchRandomWord();
         setupSubmitAndBackspace();
+
+
+        questionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Roles.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d("API", "Response: " + response);
             // Clean the response
             targetWord = response.replace("[", "").replace("]", "").replace("\"", "").toUpperCase();
-
             // Check if the word length is 5
             if (targetWord.length() != 5) {
                 Log.e("API", "Invalid word length: " + targetWord);

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_green">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="How To Play"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/small_padding"
+        android:text="Guess the Wordle in 6 tries."
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvInstruction1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/item_spacing"
+        android:text="\u2022 Each guess must be a valid 5-letter word."
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+
+    <TextView
+        android:id="@+id/tvInstruction2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/small_padding"
+        android:layout_marginEnd="8dp"
+        android:text="\u2022 The color of the tiles will change to show how close your guess was to the word."
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInstruction1" />
+
+    <TextView
+        android:id="@+id/tvExamplesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/section_spacing"
+        android:text="Examples"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvInstruction2" />
+
+    <LinearLayout
+        android:id="@+id/llExample1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/item_spacing"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvExamplesTitle">
+
+        <TextView
+            style="@style/WordleTile"
+            android:background="@drawable/tile_background_correct"
+            android:text="W" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="O" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="R" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="D" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="Y" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvExplanation1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/small_padding"
+        android:text="W is in the word and in the correct spot."
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llExample1" />
+
+
+    <LinearLayout
+        android:id="@+id/llExample2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/section_spacing"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvExplanation1">
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="L" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:background="@drawable/tile_background_present"
+            android:text="I" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="G" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="H" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="T" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvExplanation2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/small_padding"
+        android:text="I is in the word but in the wrong spot."
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llExample2" />
+
+    <LinearLayout
+        android:id="@+id/llExample3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/section_spacing"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvExplanation2">
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="R" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="O" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="G" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:background="@drawable/tile_background_absent"
+            android:text="U" />
+
+        <TextView
+            style="@style/WordleTile"
+            android:text="E" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvExplanation3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="@dimen/small_padding"
+        android:text="@string/u_is_not_in_the_word_in_any_spot"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llExample3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/cancel"
+        android:contentDescription="@string/back"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toEndOf="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

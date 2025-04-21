@@ -12,26 +12,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_alignParentEnd="true">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/history_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:padding="24dp"
-            android:contentDescription="@string/history"
-            android:background="@drawable/baseline_history_24"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/question"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/question"
+            android:background="@drawable/ask"
             android:textColor="@color/white"
             android:layout_marginEnd="20dp"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/profile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="40dp"
-            android:padding="24dp"
+
+        <ImageView
+            android:id="@+id/history_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
             android:contentDescription="@string/history"
-            android:background="@drawable/person"
+            android:background="@drawable/edit"
+            android:textColor="@color/white"
+            android:layout_marginEnd="20dp"/>
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/history"
+            android:background="@drawable/profile"
             android:textColor="@color/white"
             android:layout_marginEnd="20dp"/>
     </LinearLayout>
@@ -43,8 +57,9 @@
         android:textColor="@color/white"
         android:text="@string/congrat_you_won"
         android:gravity="center"
+        android:textSize="24sp"
         android:visibility="gone"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="68dp"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
@@ -676,7 +691,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/grid_3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="8dp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/submitBtn"
