@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="212dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/email"
         android:textColorHint="@color/bg_green"
@@ -164,6 +164,19 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/error" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="291dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/wordle_logo"
+        app:layout_constraintBottom_toTopOf="@+id/emailTextinputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/wordlelogo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

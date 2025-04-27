@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/wordle_background"
+    tools:context=".view.SplashActivity">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:useDefaultMargins="false" android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:background="@color/wordle_background"> <View
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:background="@color/wordle_grey"
+        android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/black"   android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/wordle_grey"
+            android:layout_margin="2dp"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/wordle_green"
+            android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/wordle_yellow"
+            android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/wordle_green"
+            android:layout_margin="2dp"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/black"   android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/wordle_green"
+            android:layout_margin="2dp"/>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/black"   android:layout_margin="2dp"/>
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wordle"
+        android:textSize="48sp"             android:textColor="@color/wordle_text_color"
+        android:textStyle="bold"            android:layout_marginStart="20dp"  android:layout_gravity="center_vertical" />
+</LinearLayout>
