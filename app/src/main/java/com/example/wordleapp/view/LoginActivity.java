@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText textInputEmail, textInputPassword;
     TextView signUp;
     Button loginButton;
-    String username, email, password, retypePassword, apiKey;
+    String username, email, password, apiKey;
     TextView textError;
     ProgressBar progressBar;
     SharedPreferences sharedPreferences;
@@ -68,8 +68,15 @@ public class LoginActivity extends AppCompatActivity {
                 email = String.valueOf(textInputEmail.getText());
                 password = String.valueOf(textInputPassword.getText());
 
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                    textError.setText("Please enter both email and password");
+                    textError.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+                    return;
+                }
+
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.117.194/wordle-app/login.php";
+                String url = "http://192.168.243.194/wordle_app/login.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {
@@ -98,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                                         textError.setVisibility(View.VISIBLE);
                                     }
                                 } catch (JSONException e) {
-                                    textError.setText("Error parsing response");
+                                    textError.setText("Error parsing response: " + e.getMessage());
                                     textError.setVisibility(View.VISIBLE);
                                 }
                             }
@@ -106,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressBar.setVisibility(View.GONE);
-                        textError.setText("Error connecting to server");
+                        textError.setText("Error connecting to server: " + error.getMessage());
                         textError.setVisibility(View.VISIBLE);
                     }
                 }) {

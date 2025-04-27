@@ -213,11 +213,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/back"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:layout_marginTop="48dp"
-        android:background="@drawable/cancel"
+        android:background="@drawable/backs"
         android:contentDescription="@string/back"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

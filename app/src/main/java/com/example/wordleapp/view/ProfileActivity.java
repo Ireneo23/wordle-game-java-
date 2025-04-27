@@ -22,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.wordleapp.R;
 
+import java.security.cert.CertPathValidatorException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -66,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.117.194/wordle-app/logout.php";
+                String url = "http://192.168.243.194/wordle_app/logout.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {

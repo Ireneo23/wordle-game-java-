@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="12dp">
 
         <ImageView
             android:id="@+id/question"
@@ -22,21 +22,10 @@
             android:layout_margin="16dp"
             android:layout_gravity="center"
             android:contentDescription="@string/question"
-            android:background="@drawable/ask"
+            android:background="@drawable/idea"
             android:textColor="@color/white"
             android:layout_marginEnd="20dp"/>
 
-
-        <ImageView
-            android:id="@+id/history_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="16dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/history"
-            android:background="@drawable/edit"
-            android:textColor="@color/white"
-            android:layout_marginEnd="20dp"/>
 
         <ImageView
             android:id="@+id/profile"
@@ -45,7 +34,7 @@
             android:layout_margin="16dp"
             android:layout_gravity="center"
             android:contentDescription="@string/history"
-            android:background="@drawable/profile"
+            android:background="@drawable/user"
             android:textColor="@color/white"
             android:layout_marginEnd="20dp"/>
     </LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.wordleapp.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -69,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 retypePassword = String.valueOf(TextInputRetypePassword.getText());
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url ="http://192.168.117.194/wordle-app/register.php";
+                String url ="http://192.168.243.194/wordle_app/register.php";
 
                 if (!password.equals(retypePassword)) {
                     progressBar.setVisibility(View.GONE);
@@ -120,4 +121,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+
+    private String getCurrentDateTime() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(new java.util.Date());
+    }
 }
