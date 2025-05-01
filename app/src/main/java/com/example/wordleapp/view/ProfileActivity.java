@@ -2,6 +2,7 @@ package com.example.wordleapp.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         emailTextView = findViewById(R.id.profileEmail);
 
         backButton = findViewById(R.id.backButton);
+        MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
 
 
         if (sharedPreferences.getString("logged", "false").equals("false")){
@@ -57,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                popSound.start();
                 startActivity(intent);
                 finish();
             }
@@ -64,8 +67,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                popSound.start();
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
                 String url = "http://192.168.243.194/wordle_app/logout.php";
 

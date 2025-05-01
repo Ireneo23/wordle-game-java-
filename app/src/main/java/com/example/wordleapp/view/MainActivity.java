@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -60,12 +61,18 @@ public class MainActivity extends AppCompatActivity {
         setupKeyboard();
         fetchRandomWord();
         setupSubmitAndBackspace();
+        final MediaPlayer loseSound = MediaPlayer.create(this, R.raw.lose);
+        final MediaPlayer winSound = MediaPlayer.create(this, R.raw.win);
+        final MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
+        final MediaPlayer warningSound = MediaPlayer.create(this, R.raw.warning);
+        final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.keyboard);
 
 
         questionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Roles.class);
+                popSound.start();
                 startActivity(intent);
                 finish();
             }
@@ -76,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(intent);
+                popSound.start();
                 finish();
             }
         });
@@ -83,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         nextGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popSound.start();
                 resetGame();
             }
         });
@@ -125,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             Button btn = findViewById(id);
             btn.setOnClickListener(view -> handleKeyPress(c));
             keyboardButtons.add(btn);
+
         }
     }
 
@@ -159,12 +169,20 @@ public class MainActivity extends AppCompatActivity {
                 tv.setText("");
             }
         });
+
+        MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
+        submit.setOnClickListener(v -> {
+            popSound.start();
+            checkGuess();
+        });
     }
 
     @SuppressLint("SetTextI18n")
     private void checkGuess() {
         if (currentGuess.length() < 5) {
             Toast.makeText(this, "Enter 5 letters", Toast.LENGTH_SHORT).show();
+            MediaPlayer warningSound = MediaPlayer.create(this, R.raw.warning);
+            warningSound.start();
             return;
         }
 
@@ -214,11 +232,15 @@ public class MainActivity extends AppCompatActivity {
         if (guess.equals(targetWord)) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Win!");
+            MediaPlayer winSound = MediaPlayer.create(this, R.raw.win);
+            winSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
         } else if (currentAttempt == maxAttempts - 1) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Lose! Word: " + targetWord);
+            MediaPlayer loseSound = MediaPlayer.create(this, R.raw.lose);
+            loseSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
         }

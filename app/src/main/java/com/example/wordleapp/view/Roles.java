@@ -1,6 +1,7 @@
 package com.example.wordleapp.view;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class Roles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_roles);
-
+        MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
 
         backButton = findViewById(R.id.back);
 
@@ -31,6 +32,7 @@ public class Roles extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Roles.this, MainActivity.class);
+                popSound.start();
                 startActivity(intent);
                 finish();
             }

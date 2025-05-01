@@ -670,7 +670,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="2dp"
             android:contentDescription="@string/backspace"
-            android:background="@drawable/backspace_selector"
+            android:background="@drawable/backspace"
             />
         <!-- Add rows for A-S-D-F-G-H-J-K-L and Z-X-C-V-B-N-M -->
     </GridLayout>
@@ -694,11 +694,10 @@
             />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nextGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/submit_btn"
-            android:text="@string/next"
-            android:visibility="gone"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/fastfoward"
+
             android:textColor="@color/white"
             android:layout_marginTop="8dp"
             />
