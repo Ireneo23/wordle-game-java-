@@ -54,23 +54,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.165" />
 
-    <androidx.appcompat.widget.AppCompatButton
+
+
+    <TextView
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="@string/logout"
-        android:background="@drawable/botton"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:padding="12dp"
-        android:drawablePadding="8dp"
+        android:layout_marginTop="348dp"
         android:drawableStart="@drawable/out"
+        android:drawablePadding="32dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="272dp"
+        android:drawableStart="@drawable/delete_account"
+        android:drawablePadding="32dp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="@string/delete_account"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

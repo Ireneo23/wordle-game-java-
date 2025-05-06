@@ -20,7 +20,7 @@ public class ApiClient {
 
     public static void getRandomWord(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord?minLength=5&maxLength=5&hasDictionaryDef=true&api_key=" + API_KEY;
+        String BASE_URL = "https://api.wordnik.com/v4/words.json/randomWord?minLength=5&maxLength=5&hasDictionaryDef=true&includePartOfSpeech=noun,verb,adjective&excludePartOfSpeech=proper-noun,proper-noun-plural,proper-noun-posessive,family-name&api_key=" + API_KEY;
         StringRequest request = new StringRequest(Request.Method.GET, BASE_URL, response -> {
             Log.d("API_RESPONSE", "Raw Response: " + response);
             try {
@@ -41,5 +41,4 @@ public class ApiClient {
         });
         queue.add(request);
     }
-
 }

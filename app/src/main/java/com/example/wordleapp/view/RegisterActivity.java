@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 retypePassword = String.valueOf(TextInputRetypePassword.getText());
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url ="http://192.168.243.194/wordle_app/register.php";
+                String url ="http://192.168.246.194/wordle_app/register.php";
 
                 if (!password.equals(retypePassword)) {
                     progressBar.setVisibility(View.GONE);

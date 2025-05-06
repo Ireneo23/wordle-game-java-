@@ -28,7 +28,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             super(itemView);
             date = itemView.findViewById(R.id.historyDate);
             status = itemView.findViewById(R.id.historyStatus);
-            attempts = itemView.findViewById(R.id.historyAttempts);
             deleteBtn = itemView.findViewById(R.id.deleteHistory);
         }
     }

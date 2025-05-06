@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.profile);
         nextGameButton = findViewById(R.id.nextGame);
         questionButton = findViewById(R.id.question);
+
         setupGridTextViews();
         setupKeyboard();
         fetchRandomWord();
@@ -116,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupGridTextViews() {
         for (int i = 1; i <= maxAttempts; i++) {
+
             List<TextView> row = new ArrayList<>();
             for (int j = 1; j <= 5; j++) {
                 int id = getResources().getIdentifier("tview_" + i + j, "id", getPackageName());
@@ -291,7 +293,6 @@ public class MainActivity extends AppCompatActivity {
             btn.setBackgroundColor(Color.parseColor("#636363"));
             btn.setOnClickListener(view -> handleKeyPress(btn.getText().toString().charAt(0)));
         }
-
         // Fetch a new word
         fetchRandomWord();
     }

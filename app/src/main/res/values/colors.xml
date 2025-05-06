@@ -24,4 +24,7 @@
     <color name="wordle_yellow">#C9B458</color>
     <color name="wordle_background">#FFFFFF</color>
     <color name="wordle_text_color">#C9B458</color>
+    <color name="button_normal">#FF4081</color> <!-- 默认按钮颜色 -->
+    <color name="button_pressed">#FF1744</color> <!-- 按下时的按钮颜色 -->
+
 </resources>
