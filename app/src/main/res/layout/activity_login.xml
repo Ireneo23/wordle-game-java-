@@ -33,6 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:placeholderText="ex: example@abc.com"
+        app:placeholderTextColor="@color/gray"
         app:startIconTint="@color/bg_green">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -118,7 +119,7 @@
         app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.547" />
 
     <TextView
         android:id="@+id/signUp"
@@ -136,7 +137,7 @@
         app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <TextView
         android:id="@+id/error"

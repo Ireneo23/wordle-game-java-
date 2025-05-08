@@ -2,7 +2,6 @@ package com.example.wordleapp.model;
 
 public class GameHistoryModel {
     private String status; // Win / Lose
-    private int attempts;
     private String dateTime;
 
     public String getStatus() {
@@ -13,13 +12,6 @@ public class GameHistoryModel {
         this.status = status;
     }
 
-    public int getAttempts() {
-        return attempts;
-    }
-
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
-    }
 
     public String getDateTime() {
         return dateTime;
@@ -31,7 +23,6 @@ public class GameHistoryModel {
 
     public GameHistoryModel(String status, int attempts, String dateTime) {
         this.status = status;
-        this.attempts = attempts;
         this.dateTime = dateTime;
     }
 

@@ -1,6 +1,8 @@
 package com.example.wordleapp.view;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,7 +27,14 @@ public class HistoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         viewModel = new ViewModelProvider(this).get(WordleViewModel.class);
 
-        adapter = new HistoryAdapter(viewModel.getHistoryList());
+        adapter = new HistoryAdapter(viewModel.getHistoryList(), position -> {
+            viewModel.deleteHistoryItem(position);
+            Toast.makeText(this, "Record deleted", Toast.LENGTH_SHORT).show();
+        });
         recyclerView.setAdapter(adapter);
+
+        viewModel.getHistoryListLiveData().observe(this, historyList -> {
+            adapter.updateHistoryList(historyList);
+        });
     }
 }

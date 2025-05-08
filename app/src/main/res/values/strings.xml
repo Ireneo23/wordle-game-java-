@@ -57,7 +57,6 @@
     <string name="m">M</string>
     <string name="submit">Submit</string>
     <string name="history">history</string>
-    <string name="game_history">Game History</string>
     <string name="recyclerview">recyclerview</string>
     <string name="delete">Delete</string>
     <string name="tries_3">Tries: 3</string>
@@ -66,7 +65,7 @@
     <string name="date_played">date played</string>
     <string name="game_history_list">Game History List</string>
     <string name="username">Username</string>
-    <string name="sign_up">Sign up</string>
+    <string name="sign_up">Sign Up</string>
     <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -83,4 +82,6 @@
     <string name="email_address">Email Address:</string>
     <string name="name">Name:</string>
     <string name="delete_account">Delete Account</string>
+    <string name="_2025_04_17_19_30">2025-04-17 19:30</string>
+    <string name="game_history">Game History</string>
 </resources>

@@ -13,26 +13,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.wordleapp.BuildConfig;
 import com.example.wordleapp.R;
 import com.example.wordleapp.utils.ApiClient;
+import com.example.wordleapp.viewmodel.WordleViewModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private final String API_KEY = BuildConfig.API_KEY;
     AppCompatButton nextGameButton;
-    ImageView profileButton, questionButton;
+    ImageView profileButton, questionButton, historyButton;
+    private WordleViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,17 +52,13 @@ public class MainActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.profile);
         nextGameButton = findViewById(R.id.nextGame);
         questionButton = findViewById(R.id.question);
+        viewModel = new ViewModelProvider(this).get(WordleViewModel.class);
 
         setupGridTextViews();
         setupKeyboard();
         fetchRandomWord();
         setupSubmitAndBackspace();
-        final MediaPlayer loseSound = MediaPlayer.create(this, R.raw.lose);
-        final MediaPlayer winSound = MediaPlayer.create(this, R.raw.win);
         final MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
-        final MediaPlayer warningSound = MediaPlayer.create(this, R.raw.warning);
-        final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.keyboard);
-
 
         questionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
             winSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
+            recordGameResult("Win");
         } else if (currentAttempt == maxAttempts - 1) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Lose! Word: " + targetWord);
@@ -245,12 +237,18 @@ public class MainActivity extends AppCompatActivity {
             loseSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
+            recordGameResult("Lose");
         }
 
         // Prepare for next round
         currentGuess.setLength(0);
         currentLetterIndex = 0;
         currentAttempt++;
+    }
+
+    private void recordGameResult(String status) {
+        String datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        viewModel.addHistoryItem(status, datetime);
     }
 
     private void disableInput() {

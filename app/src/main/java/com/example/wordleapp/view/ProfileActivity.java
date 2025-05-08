@@ -47,16 +47,17 @@ public class ProfileActivity extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
 
-
         if (sharedPreferences.getString("logged", "false").equals("false")){
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
         }
 
-        usernameTextView.setText(sharedPreferences.getString("username", ""));
-        emailTextView.setText(sharedPreferences.getString("email", ""));
+        String username = sharedPreferences.getString("username", "");
+        String email = sharedPreferences.getString("email", "");
 
+        usernameTextView.setText("Username: " + username);
+        emailTextView.setText("Email: " + email);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +68,6 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                                String url = "http://192.168.246.194/wordle_app/logout.php";
+                                String url = "http://192.168.81.194/wordle_app/logout.php";
 
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                                         new Response.Listener<String>() {
@@ -133,7 +133,7 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                                String url = "http://192.168.246.194/wordle_app/delete.php";
+                                String url = "http://192.168.81.194/wordle_app/delete.php";
 
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                                         new Response.Listener<String>() {
@@ -177,8 +177,5 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 }
-

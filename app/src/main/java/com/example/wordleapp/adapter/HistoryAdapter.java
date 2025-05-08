@@ -1,5 +1,6 @@
 package com.example.wordleapp.adapter;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -9,48 +10,56 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wordleapp.R;
-import com.example.wordleapp.model.GameHistoryModel;
 
 import java.util.List;
 
-public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
-    private List<GameHistoryModel> historyList;
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
+    private List<String[]> historyList;
+    private final OnDeleteClickListener deleteClickListener;
 
-    public HistoryAdapter(List<GameHistoryModel> historyList) {
-        this.historyList = historyList;
+    public interface OnDeleteClickListener {
+        void onDeleteClick(int position);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView date, status, attempts;
-        ImageButton deleteBtn;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            date = itemView.findViewById(R.id.historyDate);
-            status = itemView.findViewById(R.id.historyStatus);
-            deleteBtn = itemView.findViewById(R.id.deleteHistory);
-        }
+    public HistoryAdapter(List<String[]> historyList, OnDeleteClickListener deleteClickListener) {
+        this.historyList = historyList;
+        this.deleteClickListener = deleteClickListener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history, parent, false);
+        return new HistoryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        GameHistoryModel model = historyList.get(position);
-        holder.date.setText(model.getDateTime());
-        holder.status.setText(model.getStatus());
-        holder.attempts.setText("Attempts: " + model.getAttempts());
-
-        holder.deleteBtn.setOnClickListener(v -> {
-            historyList.remove(position);
-            notifyDataSetChanged();
-        });
+    public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
+        String[] historyItem = historyList.get(position);
+        holder.status.setText(historyItem[0]);
+        holder.date.setText(historyItem[1]);
+        holder.deleteButton.setOnClickListener(v -> deleteClickListener.onDeleteClick(position));
     }
 
     @Override
-    public int getItemCount() { return historyList.size(); }
+    public int getItemCount() {
+        return historyList.size();
+    }
+
+    public void updateHistoryList(List<String[]> newHistoryList) {
+        this.historyList = newHistoryList;
+        notifyDataSetChanged();
+    }
+
+    static class HistoryViewHolder extends RecyclerView.ViewHolder {
+        TextView status, date;
+        ImageButton deleteButton;
+
+        public HistoryViewHolder(@NonNull View itemView) {
+            super(itemView);
+            status = itemView.findViewById(R.id.historyStatus);
+            date = itemView.findViewById(R.id.historyDate);
+            deleteButton = itemView.findViewById(R.id.deleteHistory);
+        }
+    }
 }

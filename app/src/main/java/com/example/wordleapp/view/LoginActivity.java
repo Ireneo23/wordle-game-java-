@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                String url = "http://192.168.246.194/wordle_app/login.php";
+                String url = "http://192.168.81.194/wordle_app/login.php";
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                         new Response.Listener<String>() {

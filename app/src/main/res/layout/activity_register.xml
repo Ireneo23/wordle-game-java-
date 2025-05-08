@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Sign Up"
-            android:textColor="@color/bg_color"
+            android:textColor="@color/white"
             android:textSize="26sp" />
 
     </androidx.cardview.widget.CardView>
@@ -81,6 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:placeholderText="ex: example@abc.com"
+        app:placeholderTextColor="@color/gray"
         app:startIconTint="@color/bg_green">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -115,6 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:inputType="textPassword"
             android:singleLine="true"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -141,6 +143,7 @@
             android:id="@+id/retypePassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,7 +166,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.884" />
+        app:layout_constraintVertical_bias="0.813" />
 
     <TextView
         android:id="@+id/loginNow"
@@ -172,9 +175,9 @@
         android:layout_marginEnd="32dp"
         android:elevation="2dp"
         android:gravity="center"
-        android:text="login"
+        android:text="Login"
         android:textColor="@color/bg_green"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
