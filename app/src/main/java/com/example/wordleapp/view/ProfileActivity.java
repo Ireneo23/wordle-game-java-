@@ -32,14 +32,13 @@ import java.util.Map;
 public class ProfileActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     Button backButton;
-    TextView usernameTextView, emailTextView, logoutButton, deleteAccount;
+    TextView usernameTextView, emailTextView, deleteAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile);
         sharedPreferences = getSharedPreferences("WordleApp", MODE_PRIVATE);
-        logoutButton = findViewById(R.id.logout);
         usernameTextView = findViewById(R.id.profile_username);
         emailTextView = findViewById(R.id.profileEmail);
         deleteAccount = findViewById(R.id.delete);
@@ -59,6 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         usernameTextView.setText("Username: " + username);
         emailTextView.setText("Email: " + email);
 
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,59 +66,6 @@ public class ProfileActivity extends AppCompatActivity {
                 popSound.start();
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popSound.start();
-                new AlertDialog.Builder(ProfileActivity.this)
-                        .setTitle("Logout")
-                        .setMessage("Are you sure you want to log out?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-                                String url = "http://192.168.81.194/wordle_app/logout.php";
-
-                                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                                        new Response.Listener<String>() {
-                                            @Override
-                                            public void onResponse(String response) {
-                                                if (response.equals("success")) {
-                                                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                    editor.putString("logged", "");
-                                                    editor.putString("username", "");
-                                                    editor.putString("email", "");
-                                                    editor.putString("apiKey", "");
-                                                    editor.apply();
-                                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                                    startActivity(intent);
-                                                    finish();
-                                                } else {
-                                                    Toast.makeText(ProfileActivity.this, response, Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        error.printStackTrace();
-                                    }
-                                }) {
-                                    @Override
-                                    protected Map<String, String> getParams() {
-                                        Map<String, String> paramV = new HashMap<>();
-                                        paramV.put("email", sharedPreferences.getString("email", ""));
-                                        paramV.put("apiKey", sharedPreferences.getString("apiKey", ""));
-                                        return paramV;
-                                    }
-                                };
-                                queue.add(stringRequest);
-                            }
-                        })
-                        .setNegativeButton("No", null)
-                        .show();
             }
         });
 

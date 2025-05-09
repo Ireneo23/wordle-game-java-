@@ -43,9 +43,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.HistoryActivity"
-            android:exported="false" />
 
         <activity
             android:name=".view.MainActivity"

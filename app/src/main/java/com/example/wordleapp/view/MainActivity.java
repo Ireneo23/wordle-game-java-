@@ -7,26 +7,35 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.wordleapp.BuildConfig;
 import com.example.wordleapp.R;
 import com.example.wordleapp.utils.ApiClient;
-import com.example.wordleapp.viewmodel.WordleViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private final String API_KEY = BuildConfig.API_KEY;
     AppCompatButton nextGameButton;
-    ImageView profileButton, questionButton, historyButton;
-    private WordleViewModel viewModel;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtWinLose = findViewById(R.id.txt_win_lose);
-        profileButton = findViewById(R.id.profile);
         nextGameButton = findViewById(R.id.nextGame);
-        questionButton = findViewById(R.id.question);
-        viewModel = new ViewModelProvider(this).get(WordleViewModel.class);
+
+        toolbar = findViewById(R.id.toolBar);
+        setSupportActionBar(toolbar);
+
+        // Initialize buttons// Ensure the ID matches your layout file
 
         setupGridTextViews();
         setupKeyboard();
@@ -60,25 +69,6 @@ public class MainActivity extends AppCompatActivity {
         setupSubmitAndBackspace();
         final MediaPlayer popSound = MediaPlayer.create(this, R.raw.pop);
 
-        questionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Roles.class);
-                popSound.start();
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
-                popSound.start();
-                finish();
-            }
-        });
 
         nextGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +77,82 @@ public class MainActivity extends AppCompatActivity {
                 resetGame();
             }
         });
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId(); // Get the selected item's ID
+
+        if (id == R.id.profile) {
+            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+        if (id == R.id.roles) {
+            Intent intent1 = new Intent(MainActivity.this, Roles.class);
+            startActivity(intent1);
+            finish();
+            return true;
+        }
+        if (id == R.id.logout) {
+            handleLogout();
+            return true;
+        }
+            return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_item, menu);
+        return true;
+    }
+
+
+    private void handleLogout() {
+        new AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to log out?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                    String url = "http://192.168.81.194/wordle_app/logout.php";
+
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                            response -> {
+                                if (response.equals("success")) {
+                                    SharedPreferences sharedPreferences = getSharedPreferences("WordleApp", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("logged", "");
+                                    editor.putString("username", "");
+                                    editor.putString("email", "");
+                                    editor.putString("apiKey", "");
+                                    editor.apply();
+                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
+                                }
+                            },
+                            error -> {
+                                error.printStackTrace();
+                                Toast.makeText(MainActivity.this, "Error logging out: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() {
+                            SharedPreferences sharedPreferences = getSharedPreferences("WordleApp", MODE_PRIVATE);
+                            Map<String, String> params = new HashMap<>();
+                            params.put("email", sharedPreferences.getString("email", ""));
+                            params.put("apiKey", sharedPreferences.getString("apiKey", ""));
+                            return params;
+                        }
+                    };
+                    queue.add(stringRequest);
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     private void fetchRandomWord() {
@@ -229,7 +295,6 @@ public class MainActivity extends AppCompatActivity {
             winSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
-            recordGameResult("Win");
         } else if (currentAttempt == maxAttempts - 1) {
             txtWinLose.setVisibility(View.VISIBLE);
             txtWinLose.setText("You Lose! Word: " + targetWord);
@@ -237,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
             loseSound.start();
             disableInput();
             nextGameButton.setVisibility(View.VISIBLE); // Show nextGameButton
-            recordGameResult("Lose");
         }
 
         // Prepare for next round
@@ -246,10 +310,6 @@ public class MainActivity extends AppCompatActivity {
         currentAttempt++;
     }
 
-    private void recordGameResult(String status) {
-        String datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        viewModel.addHistoryItem(status, datetime);
-    }
 
     private void disableInput() {
         for (List<TextView> row : guessTextViews) {
@@ -296,3 +356,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

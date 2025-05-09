@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WordleApp</string>
+    <string name="app_name">Wordle</string>
     <string name="wordle">Wordle</string>
     <string name="enter_word">Enter word</string>
     <string name="q">Q</string>
@@ -84,4 +84,7 @@
     <string name="delete_account">Delete Account</string>
     <string name="_2025_04_17_19_30">2025-04-17 19:30</string>
     <string name="game_history">Game History</string>
+    <string name="profile">Profile</string>
+    <string name="menu">Menu</string>
+    <string name="roles">Roles</string>
 </resources>

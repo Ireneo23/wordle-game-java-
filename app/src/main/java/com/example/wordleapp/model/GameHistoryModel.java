@@ -21,11 +21,9 @@ public class GameHistoryModel {
         this.dateTime = dateTime;
     }
 
-    public GameHistoryModel(String status, int attempts, String dateTime) {
+    public GameHistoryModel(String status, String dateTime) {
         this.status = status;
         this.dateTime = dateTime;
     }
 
-
-    // Getters...
 }

@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.mediarouter)
     testImplementation(libs.junit)
     implementation(libs.volley)
     androidTestImplementation(libs.ext.junit)
